@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # STEDI Human Balance Analysis – AWS Glue Data Lake Project
 
@@ -20,6 +21,9 @@ This project uses AWS Glue and other AWS services to build a serverless data lak
 ## 🗂️ Project Structure
 
 ```bash
+=======
+# STEDI Human Balance Analytics Project
+>>>>>>> d0233e8d16d6fe95674e8253166916385ae08ab6
 .
 ├── data/
 │   ├── raw/                  # Raw downloaded data
@@ -38,6 +42,7 @@ This project uses AWS Glue and other AWS services to build a serverless data lak
 │   └── s3_loader.py
 ├── README.md                # Project overview and usage instructions
 └── notes.md                 # Issues encountered and how they were resolved
+<<<<<<< HEAD
 ```
 
 ---
@@ -101,3 +106,6 @@ Documented in [`notes.md`](notes.md) — includes:
 ✔️ Project In Progress  
 🛠️ Actively documenting and optimizing transformations  
 📈 Preparing final output for ML model training
+=======
+
+>>>>>>> d0233e8d16d6fe95674e8253166916385ae08ab6
