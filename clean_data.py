@@ -35,7 +35,7 @@ print(accelerometer_df.isnull().sum(), "\n")
 print("Step Trainer Data:")
 step_trainer_df.info()
 print(step_trainer_df.isnull().sum(), "\n")
-# -------------------------------------
+
 # 1. Add consent flag to customer data
 # -------------------------------------
 customer_df['hasConsented'] = customer_df[
@@ -43,39 +43,44 @@ customer_df['hasConsented'] = customer_df[
 ].notnull().any(axis=1)
 
 # ------------------------------------------------
-# 2. Create filtered view of customers who consented
+# 2. Filter only customers who consented
 # ------------------------------------------------
 opted_in_customers = customer_df[customer_df['hasConsented']]
 
 # ------------------------------------------------
-# 3. Merge with Accelerometer Data (user ↔ email)
+# 3. Convert all date columns from ms to datetime
 # ------------------------------------------------
-merged_accel = pd.merge(
-    accelerometer_df,
-    opted_in_customers,
-    left_on='user',
-    right_on='email',
-    how='inner'
-)
+timestamp_cols = [
+    'registrationDate', 'lastUpdateDate',
+    'shareWithResearchAsOfDate', 'shareWithPublicAsOfDate', 'shareWithFriendsAsOfDate'
+]
+for col in timestamp_cols:
+    opted_in_customers[col] = pd.to_datetime(opted_in_customers[col], unit='ms', errors='coerce')
+
+# Optional: Convert 'birthDay' to datetime
+opted_in_customers['birthDay'] = pd.to_datetime(opted_in_customers['birthDay'], errors='coerce')
+
+# Ensure phone number is string
+opted_in_customers['phone'] = opted_in_customers['phone'].astype(str)
 
 # ------------------------------------------------
-# 4. Merge with Step Trainer Data (serialNumber)
+# 4. Merge with accelerometer and step trainer data
 # ------------------------------------------------
-merged_step = pd.merge(
-    step_trainer_df,
-    opted_in_customers,
-    on='serialNumber',
-    how='inner'
-)
+merged_accel = pd.merge(accelerometer_df, opted_in_customers, left_on='user', right_on='email', how='inner')
+merged_step = pd.merge(step_trainer_df, opted_in_customers, on='serialNumber', how='inner')
+
+# Convert step_trainer timestamp (sensorReadingTime) to datetime
+merged_step['sensorReadingTime'] = pd.to_datetime(merged_step['sensorReadingTime'], unit='ms', errors='coerce')
 
 # ------------------------------------------------
-# 5. Export Cleaned/Filtered Data
+# 5. Export as JSON Lines (.jsonl)
 # ------------------------------------------------
 output_dir = "./cleaned_output"
 os.makedirs(output_dir, exist_ok=True)
 
-opted_in_customers.to_csv(f"{output_dir}/filtered_customers.csv", index=False)
-merged_accel.to_csv(f"{output_dir}/merged_accelerometer.csv", index=False)
-merged_step.to_csv(f"{output_dir}/merged_step_trainer.csv", index=False)
+# Save all as line-delimited JSON
+opted_in_customers.to_json(f"{output_dir}/filtered_customers.json", orient="records", lines=True)
+merged_accel.to_json(f"{output_dir}/merged_accelerometer.json", orient="records", lines=True)
+merged_step.to_json(f"{output_dir}/merged_step_trainer.json", orient="records", lines=True)
 
-print("✅ Export complete. Files saved in ./cleaned_output/")
+print("✅ JSON export complete. Files saved to ./cleaned_output/")
