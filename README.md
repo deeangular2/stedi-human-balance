@@ -2,13 +2,13 @@
 
 # STEDI Human Balance Analysis – AWS Glue Data Lake Project
 
-## 📊 Overview
+##  Overview
 
 This project uses AWS Glue and other AWS services to build a serverless data lake pipeline for analyzing human balance sensor data from STEDI. The goal is to clean, transform, and prepare the data for future machine learning applications.
 
 ---
 
-## 🔍 Objectives
+##  Objectives
 
 - Clean and normalize raw data from sensors (Accelerometer, Customer, Step Trainer).
 - Upload cleaned data to AWS S3 and catalog with AWS Glue Crawlers.
@@ -18,7 +18,7 @@ This project uses AWS Glue and other AWS services to build a serverless data lak
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```bash
 =======
@@ -47,7 +47,7 @@ This project uses AWS Glue and other AWS services to build a serverless data lak
 
 ---
 
-## ⚙️ Tools & Services
+##  Tools & Services
 
 - **AWS Glue** (Crawlers, Jobs, Catalog)
 - **AWS S3** (Data Lake storage)
@@ -57,7 +57,7 @@ This project uses AWS Glue and other AWS services to build a serverless data lak
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 1. **Download and clean data**  
    - Fix formatting issues in CSVs.
@@ -77,7 +77,7 @@ This project uses AWS Glue and other AWS services to build a serverless data lak
 
 ---
 
-## 🧩 Issues & Fixes
+##  Issues & Fixes
 
 Documented in [`notes.md`](notes.md) — includes:
 - Schema mismatches
@@ -87,7 +87,7 @@ Documented in [`notes.md`](notes.md) — includes:
 
 ---
 
-## 📁 Related Resources
+## Related Resources
 
 - [STEDI Step Trainer GitHub Repo](#)
 - [AWS Glue Documentation](https://docs.aws.amazon.com/glue/index.html)
@@ -95,17 +95,8 @@ Documented in [`notes.md`](notes.md) — includes:
 
 ---
 
-## 🧠 Author Notes
+## Author Notes
 
 > This project builds on previous work but re-implements data transformation using cleaner, more efficient methods. The final goal is to provide an optimized and queryable dataset for balance prediction models.
-
----
-
-## ✅ Status
-
-✔️ Project In Progress  
-🛠️ Actively documenting and optimizing transformations  
-📈 Preparing final output for ML model training
-=======
 
 >>>>>>> d0233e8d16d6fe95674e8253166916385ae08ab6
