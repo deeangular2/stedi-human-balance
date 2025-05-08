@@ -1,0 +1,31 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Ignore virtual environments (if used)
+.venv/
+env/
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore local data folders
+data/
+cleaned_data/
+*.json
+
+# Ignore AWS credentials or config files
+*.csv
+*.pem
+.aws/
+*.env
+*.secret
+*.key
+*.credentials
+
+# Ignore notebook backups
+*.ipynb~
+
+# Ignore macOS and Windows OS metadata
+.DS_Store
+Thumbs.db
