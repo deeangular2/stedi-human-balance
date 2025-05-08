@@ -29,9 +29,9 @@ This project uses AWS Glue and other AWS services to build a serverless data lak
 │   ├── raw/                  # Raw downloaded data
 │   ├── cleaned/              # Cleaned and formatted datasets
 ├── glue-scripts/            # AWS Glue PySpark ETL scripts
-│   ├── transform_customer.py
-│   ├── transform_step_trainer.py
-│   └── join_tables.py
+│   ├── customer_trusted_etl_job.py
+│   ├── tep_trainer_etl.py
+│   └── machine_learning_crated_etl_job.py
 ├── notebooks/               # Optional Jupyter notebooks for analysis or prototyping
 │   └── exploratory_analysis.ipynb
 ├── sql/                     # SQL queries used for Athena or debugging
