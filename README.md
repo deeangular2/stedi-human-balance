@@ -4,7 +4,7 @@
 
 ##  Overview
 
-This project uses AWS Glue and other AWS services to build a serverless data lake pipeline for analyzing human balance sensor data from STEDI. The goal is to clean, transform, and prepare the data for future machine learning applications.
+This project uses AWS Glue and other AWS services to build a serverless data lake pipeline for analyzing human balance sensor data from STEDI. The goal is to clean, transform, and prepare the data for future machine learning applications. 
 
 ---
 
@@ -99,4 +99,8 @@ Documented in [`notes.md`](notes.md) — includes:
 
 > This project builds on previous work but re-implements data transformation using cleaner, more efficient methods. The final goal is to provide an optimized and queryable dataset for balance prediction models.
 
->>>>>>> d0233e8d16d6fe95674e8253166916385ae08ab6
+>>>>>>> d0233e8d16d6fe95674e8253166916385ae08ab6\
+## Acknowledgments
+
+- This project was developed with assistance from [ChatGPT](https://openai.com/chatgpt) by OpenAI, which supported code generation, debugging, and project documentation.
+
